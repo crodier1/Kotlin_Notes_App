@@ -32,14 +32,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadData(title: String) {
 
-        val projections = arrayOf("ID", "Title", "Content")
+        val projections = arrayOf(DataBase.ID, DataBase.Title, DataBase.Content)
 
 
         var dbManager = DbManager(this)
 
         val selectionArgs = arrayOf(title)
 
-        val cursor = dbManager.query(projections, "Title like ?", selectionArgs, "Title")
+        val cursor = dbManager.query(projections, "Title like ?", selectionArgs, DataBase.Title)
 
         notesArray.clear()
 
@@ -47,9 +47,9 @@ class MainActivity : AppCompatActivity() {
 
             do {
 
-                val ID = cursor.getInt(cursor.getColumnIndex("ID"))
-                val Title = cursor.getString(cursor.getColumnIndex("Title"))
-                val Content = cursor.getString(cursor.getColumnIndex("Content"))
+                val ID = cursor.getInt(cursor.getColumnIndex(DataBase.ID))
+                val Title = cursor.getString(cursor.getColumnIndex(DataBase.Title))
+                val Content = cursor.getString(cursor.getColumnIndex(DataBase.Content))
 
                 notesArray.add(Note(ID, Title, Content))
 
@@ -164,9 +164,9 @@ class MainActivity : AppCompatActivity() {
 
     fun goToUpdate(note:Note){
         var intent = Intent(this,AddNotes::class.java)
-        intent.putExtra("ID", note.id)
-        intent.putExtra("Title", note.title)
-        intent.putExtra("Content", note.content)
+        intent.putExtra(DataBase.ID, note.id)
+        intent.putExtra(DataBase.Title, note.title)
+        intent.putExtra(DataBase.Content, note.content)
 
         startActivity(intent)
     }

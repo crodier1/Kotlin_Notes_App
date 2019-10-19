@@ -9,12 +9,16 @@ import android.database.sqlite.SQLiteQueryBuilder
 import android.widget.Toast
 
 class DbManager {
-    val dbName = "MyNotes"
-    val dbTable = "Notes"
-    val colID = "ID"
-    val colTitle = "Title"
-    val colContent = "Content"
-    val dbVersion = 1
+
+    companion object{
+        const val dbName = "MyNotes"
+        const val dbTable = "Notes"
+        const val colID = "ID"
+        const val colTitle = "Title"
+        const val colContent = "Content"
+        const val dbVersion = 1
+    }
+
 
     //CREATE TABLE IF NOT EXISTS MyNotes (ID INTEGER PRIMARY KEY, title TEXT, Content TEST);"
     val sqlCreateTable = "CREATE TABLE IF NOT EXISTS " + dbTable + " (" + colID + " INTEGER PRIMARY KEY," +

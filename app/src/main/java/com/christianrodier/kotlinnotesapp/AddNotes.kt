@@ -20,11 +20,11 @@ class AddNotes : AppCompatActivity() {
 
         try{
 
-            id = bundle!!.getInt("ID", 0)
+            id = bundle!!.getInt(DataBase.ID, 0)
 
             if (id != 0){
-                etTitle.setText(bundle.getString("Title"))
-                etContent.setText(bundle.getString("Content"))
+                etTitle.setText(bundle.getString(DataBase.Title))
+                etContent.setText(bundle.getString(DataBase.Content))
             }
 
         } catch (ex: Exception){}
@@ -37,8 +37,8 @@ class AddNotes : AppCompatActivity() {
         var dbManager = DbManager(this)
 
         var values = ContentValues()
-        values.put("Title", etTitle.text.toString())
-        values.put("Content", etContent.text.toString())
+        values.put(DataBase.Title, etTitle.text.toString())
+        values.put(DataBase.Content, etContent.text.toString())
 
 
         if (id == 0){
